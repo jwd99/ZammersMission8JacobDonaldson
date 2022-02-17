@@ -22,6 +22,7 @@ namespace Zammers.Infastructure
 
         public PageHolder PageModeler   { get; set; }
         public string PageAction { get; set; }
+        //Each of the PageClasses are used for css styling in the page
         public bool PageClassesEnabled    { get; set; } = false;
         public string PageClass { get; set; }
         public string PageClassNormal { get; set; }
@@ -38,7 +39,7 @@ namespace Zammers.Infastructure
 
                 tb.Attributes["href"] = uhelp.Action(PageAction, new { pageNum = i });
                 if (PageClassesEnabled)
-                {
+                {//adds css styling to specific classes above
                     tb.AddCssClass(PageClass);
                     tb.AddCssClass(i == PageModeler.CurrentPage
                         ? PageClassSelected : PageClassNormal);

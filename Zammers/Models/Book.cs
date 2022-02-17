@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Zammers.Models
 {
     public partial class Book
-    {
+    {//All database values used
         [Key]
         [Required]
         public int BookId { get; set; }

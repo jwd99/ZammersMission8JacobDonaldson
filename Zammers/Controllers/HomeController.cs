@@ -19,7 +19,7 @@ namespace Zammers.Controllers
         private IZammerRepo repo;
         
         public HomeController (IZammerRepo holder)
-        {
+        {//USes the Repo which sets up what we normally put here
             repo = holder;
         }
 
@@ -28,14 +28,14 @@ namespace Zammers.Controllers
             int pageSize = 10;
 
             var holder = new BooksViewModel
-            {
+            {//Orders by title and skips based on which page number it is. It also grabs num of books based on pageSize
                 Books = repo.Books
               .OrderBy(b => b.Title)
               .Skip((pageNum - 1) * pageSize)
               .Take(pageSize),
 
                 PageHolder = new PageHolder
-                {
+                {//Page number information to be sent to pagination helper and what not
                     TotalNumBooks = repo.Books.Count(),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
