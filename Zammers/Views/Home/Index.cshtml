@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Zammers";
+}
+
+@model BooksViewModel
+
+<h1>Zammers</h1>
+
+
+@foreach(Book b in Model.Books)
+{
+    <partial name="BookSummary" model="b" />
+}
+
+@*<div page-modeler="@Model.PageHolder" page-action="Index"></div>
+<br />
+<br />*@
+
+
+
+<div page-modeler="@Model.PageHolder" page-action="Index" page-class="btn" page-classes-enabled="true"
+      page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
