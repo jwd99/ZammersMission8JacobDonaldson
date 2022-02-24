@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Zammers.Models;
 using Zammers.Models.ViewModels;
 
-//Jacob Donaldson Mission 7
+//Jacob Donaldson Mission 8
 //Zammers Book Buying site
-//2/16/2022
+//2/24/2022
 
 namespace Zammers.Controllers
 {
@@ -23,22 +23,26 @@ namespace Zammers.Controllers
             repo = holder;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string bookCategory, int pageNum = 1)
         {
             int pageSize = 10;
 
             var holder = new BooksViewModel
             {//Orders by title and skips based on which page number it is. It also grabs num of books based on pageSize
                 Books = repo.Books
+              .Where(b => b.Category == bookCategory || bookCategory == null)
               .OrderBy(b => b.Title)
               .Skip((pageNum - 1) * pageSize)
               .Take(pageSize),
-
+                //Added in where clause to bring in bookCategory info if not null.
                 PageHolder = new PageHolder
                 {//Page number information to be sent to pagination helper and what not
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks = (bookCategory == null
+                    ? repo.Books.Count()
+                    : repo.Books.Where(b => b.Category == bookCategory).Count()),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
+                    //if statement brings category if needed
                 }
             };
             return View(holder);
