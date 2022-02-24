@@ -60,9 +60,13 @@ namespace Zammers
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("catPage","{bookCategory}/Page{pageNum}", new {Controller ="Home", action="Index"});
+                endpoints.MapControllerRoute("category", "{bookCategory}", new { Controller = "Home", action = "Index", pageNum = "1" });
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Paging",
+                    pattern: "Page{pageNum}",
+                    new {Controller = "Home", action ="Index"});
+               
 
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();

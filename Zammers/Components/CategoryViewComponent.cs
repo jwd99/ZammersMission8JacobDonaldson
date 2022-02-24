@@ -15,6 +15,8 @@ namespace Zammers.Components
 
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedCategory = RouteData?.Values["bookCategory"];
+
             var categories = repo2.Books
                 .Select(b => b.Category)
                 .Distinct()
