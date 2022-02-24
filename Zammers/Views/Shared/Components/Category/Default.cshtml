@@ -3,9 +3,9 @@
 @model IEnumerable<string>
 
     <div class="d-grid gap-4">
-        <a asp-controller="Home" asp-action="Index" asp-route-bookCategory="" asp-route-pageNum="" class="btn btn-primary">Home</a>
+        <a asp-controller="Home" asp-action="Index" asp-route-bookCategory="" asp-route-pageNum="1" class="btn @(ViewBag.SelectedCategory == null ? "btn-primary ": "btn-secondary")">Home</a>
     
-
+        @* This was an attempt at starting the home button highlighted by default(!ViewBag.SelectedCategory == null) ? "btn-secondary" : "btn-primary"  )*@
     @foreach(string text in Model)
     {
         <a asp-controller="Home" asp-action="Index" asp-route-bookCategory="@text" asp-route-pageNum="1" class="btn @(ViewBag.SelectedCategory == text ? "btn-primary ": "btn-secondary")">@text</a>

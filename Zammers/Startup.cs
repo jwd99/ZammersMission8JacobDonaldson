@@ -65,7 +65,7 @@ namespace Zammers
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNum}",
-                    new {Controller = "Home", action ="Index"});
+                    new {Controller = "Home", action ="Index", pageNum=1});
                
 
                 endpoints.MapDefaultControllerRoute();
