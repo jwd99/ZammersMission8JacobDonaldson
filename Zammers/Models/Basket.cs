@@ -28,8 +28,13 @@ namespace Zammers.Models
         }
         public double CalcTotal()
         {//cals total num of books
-            double sum = Items.Sum(b => b.Quantity * 25);
+            double sum = Items.Sum(b => b.Total += b.Book.Price);
             return sum;
+        }
+        public double SubTotal()
+        {
+            double subtot = Items.Sum(b => b.SubTotal += b.Book.Price);
+            return subtot;
         }
     }
     public class BasketLineItem
@@ -37,5 +42,7 @@ namespace Zammers.Models
         public int LineID { get; set; }
         public Book Book { get; set; }
         public int Quantity { get; set; }
+        public double SubTotal { get; set; }
+        public double Total { get; set; }
     }
 }
