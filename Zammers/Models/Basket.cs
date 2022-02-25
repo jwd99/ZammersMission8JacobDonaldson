@@ -31,7 +31,7 @@ namespace Zammers.Models
         }
         public double CalcTotal()
             {//cals total num of books
-                double sum = Items.Sum(b => b.Total += b.Book.Price);
+                double sum = Items.Sum(b => b.Total += b.SubTotal);
                 return sum;
             }
  
