@@ -44,6 +44,7 @@ namespace Zammers.Infastructure
                     tb.AddCssClass(i == PageModeler.CurrentPage
                         ? PageClassSelected : PageClassNormal);
                 }
+                tb.AddCssClass(PageClass);
                 tb.InnerHtml.Append(i.ToString());
 
                 finalout.InnerHtml.AppendHtml(tb);

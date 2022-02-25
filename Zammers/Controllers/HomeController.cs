@@ -25,7 +25,7 @@ namespace Zammers.Controllers
 
         public IActionResult Index(string bookCategory, int pageNum = 1)
         {
-            int pageSize = 10;
+            int pageSize = 5;
 
             var holder = new BooksViewModel
             {//Orders by title and skips based on which page number it is. It also grabs num of books based on pageSize
