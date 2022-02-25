@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Zammers.Models;
 
-//Jacob Donaldson Mission 7 2/16/2022
+//Jacob Donaldson Mission 8 2/24/2022
 //This is the Zammers book selling site
 namespace Zammers
 {
@@ -54,7 +54,7 @@ namespace Zammers
     
 
             app.UseEndpoints(endpoints =>
-            {
+            {//endpoints are rough. First one tries category with page. then page, then category alone, then neither for home
                 endpoints.MapControllerRoute("catPage","{bookCategory}/Page{pageNum}", new {Controller ="Home", action="Index"});
                  endpoints.MapControllerRoute(
                     name: "Paging",
