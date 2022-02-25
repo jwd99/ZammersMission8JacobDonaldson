@@ -2,7 +2,7 @@
 }
 @model IEnumerable<string>
 
-    <div class="d-grid gap-4">
+    <div class="d-grid gap-2">
         <a asp-controller="Home" asp-action="Index" asp-route-bookCategory="" asp-route-pageNum="1" class="btn @(ViewBag.SelectedCategory == null ? "btn-primary ": "btn-secondary")">Home</a>
     
         @* This was an attempt at starting the home button highlighted by default(!ViewBag.SelectedCategory == null) ? "btn-secondary" : "btn-primary"  )*@

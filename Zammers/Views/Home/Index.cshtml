@@ -6,12 +6,12 @@
 
 <h1>Zammers</h1>
 
-
-@foreach(Book b in Model.Books)
-{
-    <partial name="BookSummary" model="b" />
-}
-
+<div class="row m-4">
+    @foreach (Book b in Model.Books)
+    {
+        <partial name="BookSummary" model="b" />
+    }
+</div>
 
 
 
