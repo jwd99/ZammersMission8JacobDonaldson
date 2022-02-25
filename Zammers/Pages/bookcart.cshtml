@@ -21,7 +21,7 @@
                     <td>@t.Book.Title</td>
                     <td>@t.Quantity</td>
                     <td>$@t.Book.Price</td>
-                    <td>@Model.basket.SubTotal().ToString("c")</td>
+                    <td>@t.SubTotal.ToString("c")</td>
                 </tr>
             }
     </tbody>

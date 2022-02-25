@@ -17,25 +17,24 @@ namespace Zammers.Models
                 Items.Add(new BasketLineItem
                     {//gets the total qty of books
                     Book = bk,
-                    Quantity = qty
+                    Quantity = qty,
+                    SubTotal = bk.Price
                 });
             }
             else
             {
                 Line.Quantity += qty;
+                Line.SubTotal += bk.Price;
             }
-          
+        
+       
         }
         public double CalcTotal()
-        {//cals total num of books
-            double sum = Items.Sum(b => b.Total += b.Book.Price);
-            return sum;
-        }
-        public double SubTotal()
-        {
-            double subtot = Items.Sum(b => b.SubTotal += b.Book.Price);
-            return subtot;
-        }
+            {//cals total num of books
+                double sum = Items.Sum(b => b.Total += b.Book.Price);
+                return sum;
+            }
+ 
     }
     public class BasketLineItem
     {//line item id and quantity
