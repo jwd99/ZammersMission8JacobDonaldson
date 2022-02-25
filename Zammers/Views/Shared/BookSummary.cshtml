@@ -25,7 +25,7 @@
         <form method="post" asp-page="/bookcart">
             <input type="hidden" asp-for="@Model.BookId"/>
             <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-
+            <button type="submit" class="btn btn-outline-dark">Buy</button>
         </form>
 </div>
 <br />

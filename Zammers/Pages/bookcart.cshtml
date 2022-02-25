@@ -5,7 +5,7 @@
 
 <h1>Shopping Cart</h1>
 
-<table class="d-lg-table table-light table-borderless">
+<table class="d-lg-table table-light table-bordered">
     <thead>
         <tr>
             <th>Item</th>
@@ -15,15 +15,26 @@
         </tr>
     </thead>
     <tbody>
-        
+        @foreach(var t in Model.basket.Items)
+            {
+                <tr>
+                    <td>@t.Book.Title</td>
+                    <td>@t.Quantity</td>
+                    <td>@t.Book.Price</td>
+                    <td>holder</td>
+                </tr>
+            }
     </tbody>
     <tfoot>
         <tr>
-            <td>Total</td>
-            <td></td>
+            <td colspan="5">Total</td>
+            <td>@Model.basket.CalcTotal().ToString("c")</td>
         </tr>
 
     </tfoot>
 </table>
 
 @*Addinreturn button*@
+<div>
+    <a class="btn btn-outline-dark" href="@Model.ReturnUrl">Continue Donating</a>
+</div>

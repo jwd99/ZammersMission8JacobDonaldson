@@ -5,7 +5,7 @@ namespace Zammers.Models
 {
     public class Basket
     {//create new list of line items
-        public List<BasketLineItem> Items { get; set; }
+        public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
         
         public void AddItem (Book bk, int qty)
         {//adds items to line item list with book ids
