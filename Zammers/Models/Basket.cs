@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Zammers.Models
@@ -7,7 +8,7 @@ namespace Zammers.Models
     {//create new list of line items
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
         
-        public void AddItem (Book bk, int qty)
+        public virtual void AddItem (Book bk, int qty)
         {//adds items to line item list with book ids
             BasketLineItem Line = Items
                 .Where(b =>b.Book.BookId == bk.BookId)
@@ -29,6 +30,16 @@ namespace Zammers.Models
         
        
         }
+
+        public virtual void RemoveItem (Book book)
+        {
+            Items.RemoveAll(x => x.Book.BookId == book.BookId);
+        }
+
+        public virtual void ClearBasket()
+        {
+            Items.Clear();
+        }
         public double CalcTotal()
             {//cals total num of books
                 double sum = Items.Sum(b => b.Total += b.SubTotal);
@@ -38,6 +49,7 @@ namespace Zammers.Models
     }
     public class BasketLineItem
     {//line item id and quantity
+        [Key]
         public int LineID { get; set; }
         public Book Book { get; set; }
         public int Quantity { get; set; }

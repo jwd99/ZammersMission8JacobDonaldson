@@ -12,6 +12,8 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Subtotal</th>
+            <th>Delete</th>
+            <th>Summary</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +24,12 @@
                     <td>@t.Quantity</td>
                     <td>$@t.Book.Price</td>
                     <td>@t.SubTotal.ToString("c")</td>
+                    <td class="text-capitalize"><form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="bookId" value="@t.Book.BookId"/>
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl"/>
+                        <button class="btn btn-warning">Delete</button>
+                         </form></td>
+                    <td>ICON GOES HERE</td>
                 </tr>
             }
     </tbody>
@@ -37,4 +45,5 @@
 @*Addinreturn button*@
 <div>
     <a class="btn btn-outline-dark" href="@Model.ReturnUrl">Continue Donating</a>
+    <a class="btn btn-outline-dark" asp-controller="Checkout" asp-action="Checkout">Chectout</a>
 </div>
