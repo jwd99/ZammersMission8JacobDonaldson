@@ -9,6 +9,7 @@ namespace Zammers.Components
 {
     public class CarticonViewComponent : ViewComponent
     {
+        //brings in the basket class and then sets a new basketservice var to hold for the cart summary
         private Basket basket;
         public CarticonViewComponent(Basket basketservices)
         {

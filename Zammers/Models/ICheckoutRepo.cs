@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Zammers.Models
 {
     public interface ICheckoutRepo
-    {
+    {//interface for checkout repository
 
         IQueryable<checkoutInfo> CheckoutInfos { get; }
 

@@ -12,6 +12,7 @@ namespace Zammers.Controllers
 
         private ICheckoutRepo repo { get; set; }
         private Basket basket { get; set; }
+        //brings in both basket and repos
         public CheckoutController(ICheckoutRepo temp, Basket b)
         {
             repo = temp;
@@ -25,7 +26,7 @@ namespace Zammers.Controllers
 
         public IActionResult Checkout( checkoutInfo checkout)
         {
-
+            //for errors it will keep the page from moving on
             if(basket.Items.Count() ==0)
             {
                 ModelState.AddModelError("", "Your cart is empty");

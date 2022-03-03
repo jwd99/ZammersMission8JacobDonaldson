@@ -20,6 +20,7 @@ namespace Zammers.Models
         }
 
         public DbSet<Book> Books { get; set; }
+        //builds the checkoutinfo database section
         public DbSet<checkoutInfo> CheckoutInfos {get; set;}
 
        

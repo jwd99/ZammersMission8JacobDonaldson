@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Zammers.Models
 {
     public class checkoutInfo
-    {
+    {//model for all of the checkout user information
 
         [Key]
         [BindNever]

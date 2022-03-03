@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Zammers.Models;
 
-//Jacob Donaldson Mission 8 2/24/2022
+//Jacob Donaldson Mission 9 3/3/2022 @ 12:14 AM
 //This is the Zammers book selling site
 namespace Zammers
 {
@@ -35,6 +35,7 @@ namespace Zammers
                 options.UseSqlite(Configuration["ConnectionStrings:ZammerDBConnection"]);
             });
             services.AddScoped<IZammerRepo, EFZammerRepo>();
+            //insures the repos for checkout are available
             services.AddScoped<ICheckoutRepo, EFCheckoutRepo>();
             services.AddRazorPages();
             services.AddDistributedMemoryCache();

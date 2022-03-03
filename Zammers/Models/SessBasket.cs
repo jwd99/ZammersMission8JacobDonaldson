@@ -21,7 +21,8 @@ namespace Zammers.Models
                 }
         [JsonIgnore]
         public ISession Session { get; set; }
-
+        
+        //each of the below override the basket class moving the session data to its own class
         public override void AddItem(Book bk, int qty)
         {
             base.AddItem(bk, qty);
