@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+
+<div class="container-fluid">
+    <div class="row p-2">
+        <div class="col-3">
+            <div class="d-grid gap-1">
+
+                <NavLink class="btn btn-light btn-outline-dark" href="/admin/books" ActiveClass="btn-primary text-black" Match="NavLinkMatch.Prefix">Books</NavLink>
+                <NavLink class="btn btn-light btn-outline-dark" href="/admin/orders" ActiveClass="btn-primary text-black" Match="NavLinkMatch.Prefix">Orders</NavLink>
+            </div>
+        </div>
+
+        <div class="col">
+            @Body
+        </div>
+    </div>
+</div>

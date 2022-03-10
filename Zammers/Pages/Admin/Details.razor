@@ -1,0 +1,28 @@
+﻿@page "/admin/books/details/{id:long}"
+
+<h3 class="bg-info text-white text-center p-1">Details</h3>
+
+<table class="table table-dark table-bordered">
+    <tbody>
+        <tr><th>ID</th><td>@Book.BookId</td></tr>
+        <tr><th>Title</th><td>@Book.Title</td></tr>
+        <tr><th>Author</th><td>@Book.Author</td></tr>
+        <tr><th>Publisher</th><td>@Book.Publisher</td></tr>
+        <tr><th>Category</th><td>@Book.Category</td></tr>
+        <tr><th>Price</th><td>@Book.Price</td></tr>
+    </tbody>
+</table>
+<NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/books">Back</NavLink>
+@code {
+    [Inject]
+    public IZammerRepo repo { get; set; }
+    [Parameter]
+    public long Id { get; set; }
+    public Book Book { get; set; }
+    protected override void OnParametersSet()
+    {
+        Book = repo.Books.FirstOrDefault(b => b.BookId == Id);
+    }
+    public string EditUrl => $"/admin/books/edit/{Book.BookId}";
+}

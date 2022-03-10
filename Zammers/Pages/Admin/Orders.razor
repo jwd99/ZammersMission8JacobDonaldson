@@ -1,0 +1,36 @@
+﻿@page "/admin/orders"
+
+
+@inherits OwningComponentBase<ICheckoutRepo>
+
+<OrderTable TableName="Unshipped Orders" OrdersData="UnshippedOrders" ButtonName="Ship" OrderSelected="ShipOrder"></OrderTable>
+<OrderTable TableName="Shipped Orders" OrdersData="ShippedOrders" ButtonName="Reset" OrderSelected="ResetOrder"></OrderTable>
+
+<button class="btn btn-primary" @onclick="@(x => UpdateData())">Refresh Data</button>
+
+@code
+{
+    public ICheckoutRepo repo => Service;
+    public IEnumerable<checkoutInfo> AllOrders { get; set; }
+    public IEnumerable<checkoutInfo> UnshippedOrders { get; set; }
+    public IEnumerable<checkoutInfo> ShippedOrders { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+    protected async Task UpdateData()
+    {
+        AllOrders = await repo.CheckoutInfos.ToListAsync();
+        UnshippedOrders = AllOrders.Where(x => !x.Shipped);
+        ShippedOrders = AllOrders.Where(x => x.Shipped);
+    }
+    public void ShipOrder(int id) => UpdateOrder(id, true);
+    public void ResetOrder(int id) => UpdateOrder(id, false);
+    private void UpdateOrder(int id, bool shipValue)
+    {
+        checkoutInfo co = repo.CheckoutInfos.FirstOrDefault(co => co.CheckoutId == id);
+        co.Shipped = shipValue;
+        repo.SaveOrder(co);
+    }
+}
+

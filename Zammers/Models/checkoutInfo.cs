@@ -28,9 +28,10 @@ namespace Zammers.Models
         public string ZipCode { get; set; }
         [Required(ErrorMessage = "Please enter the a country")]
         public string Country { get; set; }
-
         public string Notes { get; set; }
 
+        [BindNever]
+        public bool Shipped { get; set; } = false;
 
     }
 }
