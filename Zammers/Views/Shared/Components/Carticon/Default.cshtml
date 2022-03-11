@@ -8,7 +8,7 @@
 <div class="">
      @if (Model.Items.Count() > 0)
             {
-         <small class="navbar-text">
+         <small class="navbar-text text-white">
              <u>Your cart:</u>
              @Model.Items.Sum(x=> x.Quantity) item(s)
              @Model.CalcTotal().ToString("c")

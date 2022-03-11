@@ -15,37 +15,54 @@
     {
         <div class="form-group">
             <label>ID</label>
-            <input class="form-control" disabled value="@Book.BookId" />
+            <input class="form-control shadow-sm mb-1 bg-body rounded" disabled value="@Book.BookId" />
         </div>
     }
     <div class="form-group">
         <lable>Title</lable>
         <ValidationMessage For="@(()=> Book.Title)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="Book.Title"></InputText>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Title"></InputText>
     </div>
     <div class="form-group">
         <lable>Author</lable>
         <ValidationMessage For="@(()=> Book.Author)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="Book.Author"></InputText>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Author"></InputText>
     </div>
     <div class="form-group">
-        <lable>Title</lable>
+        <lable>Publisher</lable>
         <ValidationMessage For="@(()=> Book.Publisher)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="Book.Publisher"></InputText>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Publisher"></InputText>
+    </div>
+    <div class="form-group">
+        <lable>Isbn</lable>
+        <ValidationMessage For="@(()=> Book.Isbn)"></ValidationMessage>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Isbn"></InputText>
+    </div>
+    <div class="form-group">
+        <lable>Classification</lable>
+        <ValidationMessage For="@(()=> Book.Classification)"></ValidationMessage>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Classification"></InputText>
     </div>
     <div class="form-group">
         <lable>Category</lable>
         <ValidationMessage For="@(()=> Book.Category)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="Book.Category"></InputText>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Category"></InputText>
+    </div>
+    <div class="form-group">
+        <lable>Page Count</lable>
+        <ValidationMessage For="@(()=> Book.PageCount)"></ValidationMessage>
+        <InputNumber class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.PageCount"></InputNumber>
     </div>
     <div class="form-group">
         <lable>Price</lable>
         <ValidationMessage For="@(()=> Book.Price)"></ValidationMessage>
-        <InputNumber class="form-control" @bind-Value="Book.Price"></InputNumber>
+        <InputNumber class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Book.Price"></InputNumber>
     </div>
     <button type="submit" class="btn btn-@ThemeColor">Save</button>
     <NavLink class="btn -btn-danger" href="/admin/books">Cancel</NavLink>
 </EditForm>
+<br />
+<br />
 
 @code {
     public IZammerRepo repo => Service;

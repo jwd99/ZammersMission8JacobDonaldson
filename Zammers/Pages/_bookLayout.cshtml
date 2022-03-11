@@ -34,31 +34,49 @@
             </div>
         </nav>
     </header>
-    
+
     <div class="bg-dark text-white p-2">
         <span class="navbar-brand ml-2">BOOK STORE</span>
     </div>
+    <!-- Flexbox container for aligning the toasts -->
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
 
+        <!-- Then put toasts within -->
+        <!-- I adjusted and added in the blue spinner. Also added js script so it works-->
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+            <div class="toast-header">
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                <strong class="me-auto">ZammerAdmin</strong>
+                <small>0 mins ago</small>
+                    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello! Welcome to the admin page!!
+            </div>
+        </div>
+    </div>
 
     @*Below Can be removed*@
     <div class="row m-1 p-1">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Zammers - <a asp-area="" asp-controller="Home" asp-action="Home">Home</a>
         </div>
-
-
-
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2022 - Zammers - <a asp-area="" asp-controller="Home" asp-action="Home">Home</a>
-            </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        @RenderSection("Scripts", required: false)
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
