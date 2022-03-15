@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,12 @@ namespace Zammers
             {
                 options.UseSqlite(Configuration["ConnectionStrings:ZammerDBConnection"]);
             });
+            //Context and database connector for identity and user information
+            services.AddDbContext<IdentityContext>(options => 
+                options.UseSqlite(Configuration["ConnectionStrings:IdentityDBConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityContext>();
             services.AddScoped<IZammerRepo, EFZammerRepo>();
             //insures the repos for checkout are available
             services.AddScoped<ICheckoutRepo, EFCheckoutRepo>();
@@ -43,6 +50,7 @@ namespace Zammers
             services.AddScoped<Basket>(x => SessBasket.GetBasket(x));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddServerSideBlazor();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,10 @@ namespace Zammers
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
+
+            //identity add ons
+            app.UseAuthentication();
+            app.UseAuthorization();
 
     
 
@@ -75,6 +87,7 @@ namespace Zammers
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
+          IdSeedData.EnsurePopulated(app);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿@* //Jacob Donaldson Mission 8 2/23/2022
     //This is the Zammers book selling site *@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +37,27 @@
     </header>
 
     <div class="bg-dark text-white p-2">
-        <span class="navbar-brand ml-2">BOOK STORE</span>
+        <div class="row">
+            <div class="col">
+                <span class="navbar-brand ml-2">BOOK STORE</span>
+            </div>
+            <div class="col-6">
+                @*My blockquote bootstrap addition*@
+                <figure>
+                    <blockquote class="blockquote">
+                        <p>With Great Power Comes Great Responsibility</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                       Uncle Ben<cite title="Source Title">Spiderman</cite>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-2">
+                <a class="btn btn-danger" href="/account/logout">Logout</a>
+            </div>
+        </div>
+       
+       
     </div>
     <!-- Flexbox container for aligning the toasts -->
     <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
